@@ -1,0 +1,357 @@
+{
+  \newmdenv[tikzsetting={draw=black,fill=white,fill opacity=0.7, line width=4pt},backgroundcolor=none,leftmargin=0,rightmargin=0,innertopmargin=4pt,skipbelow=\baselineskip,%
+  skipabove=\baselineskip]{TitleBoxFunctionalImperativeProgramming}
+
+  \usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{image/title-background.png}}
+
+  \begin{frame}[plain] 
+  \title{Functional Imperative Programming}
+  
+  \vspace{3em}
+
+  \begin{TitleBoxFunctionalImperativeProgramming}
+    \begin{center}
+    {\Large \inserttitle}
+    \end{center}
+  \end{TitleBoxFunctionalImperativeProgramming}
+
+  \end{frame}
+}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative v OOP}
+\framesubtitle{The fallacy of false compromise}
+\begin{block}{A note on OOP}
+I am going to dismiss Object-Oriented Programming, because I don't know what it is \tiny{and neither do you}
+\end{block}
+\end{frame}
+
+
+{
+\usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{image/book.png}}
+\begin{frame}
+\frametitle{Functional v Imperative}
+\begin{center}
+\LARGE{The parable of he who is not even wrong}
+\end{center}
+\end{frame}
+}
+
+{
+\usebackgroundtemplate{
+\begin{tikzpicture}[remember picture,overlay]
+  \coordinate (aa) at ($(a1)+(-1,7.5)$);
+  \node[right] at (aa) {\includegraphics[height=1cm]{image/book-small.png}};
+\end{tikzpicture}
+}
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+Someone in a pub once said to me, not too long ago
+\begin{quote}
+Hi my name is Wiggleydoo and I am the Chief Wippedy-wop for Python programming in Australia.
+\end{quote}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+and I thought to myself, ``oh yeah that's nice''
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+and then this happened
+\begin{quote}
+Functional programming is great and all, but I only use state where it is appropriate. You know\ldots when the problem demands stateful things.
+\end{quote}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{center}
+\includegraphics[width=0.7\paperwidth]{image/shock.jpg}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{and it all came back to me}
+\ldots the days of writing Python, while hearing my dearly loved colleagues parrot the doo-doo that they read on the internet
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{Fact}
+There is no such thing as an ``inherently stateful'' computation or algorithm
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{So I called shenanigans on that}
+\begin{quote}
+but what about those algorithms that demand imperative programming?
+\end{quote}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{Church-Turing Thesis}
+\begin{quote}
+Many people do imperative programming using pure-functional programming all day, every day
+\end{quote}
+This can be achieved for every program that can possibly exist
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{``but how?''}
+At this point I am stumped. ``Casually \ldots er neatly?''
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{Recognising my confoundment}
+My friend pulled out some imperative pure-functional production code that had been written at a bank
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional v Imperative}
+\framesubtitle{The parable of he who is not even wrong}
+\begin{block}{Escaping the state of delirium}
+The discussion then quickly turned to beer
+\end{block}
+\end{frame}
+}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+program = do
+  a <- readFile "file"
+  print a
+  writeFile "cods!" "file"
+  b <- readFile "file"
+  print b
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+program = do
+  a <- `readFile "file"`
+  print a
+  writeFile "cods!" "file"
+  b <- `readFile "file"`
+  print b
+\end{lstlisting}
+\end{block}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(5,5.8)$);
+\node[note,draw,callout relative pointer={($(aa)-(5.7,4.0)$)},right] at (aa) {well?};
+\node[note,draw,callout relative pointer={($(aa)-(5.9,5.1)$)},right] at (aa) {well?};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+file =
+  readFile "file"
+
+program = do
+  a <- `file`
+  print a
+  writeFile "cods!" "file"
+  b <- `file`
+  print b
+\end{lstlisting}
+\end{block}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(5,4.2)$);
+\node[note,draw,callout relative pointer={($(aa)-(7.8,2.4)$)},right] at (aa) {did the program change?};
+\node[note,draw,callout relative pointer={($(aa)-(8.3,3.2)$)},right] at (aa) {did the program change?};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+file =
+  readFile "file"
+
+program = do
+  `a <- file`
+  `print a`
+  writeFile "cods!" "file"
+  `b <- file`
+  `print b`
+\end{lstlisting}
+\end{block}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(5,4.2)$);
+\node[note,draw,callout relative pointer={($(aa)-(8.0,2.6)$)},right] at (aa) {in fact, look at this repetition of work};
+\node[note,draw,callout relative pointer={($(aa)-(9.8,3.7)$)},right] at (aa) {in fact, look at this repetition of work};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+printfile = do
+  f <- readFile "file"
+  print f
+
+program = do
+  `printfile`
+  writeFile "cods!" "file"
+  `printfile`
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Did I mention that functional programming is}
+\begin{center}
+\textbf{Don't Repeat Yourself} without the duplicity?
+\end{center}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+printfile = do
+  f <- readFile "file"
+  print f
+
+program = do
+  `printfile`
+  writeFile "cods!" "file"
+  `printfile`
+\end{lstlisting}
+\end{block}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(7,4.2)$);
+\node[note,draw,callout relative pointer={($(aa)-(11.8,2.6)$)},right] at (aa) {stop it!};
+\node[note,draw,callout relative pointer={($(aa)-(11.8,3.3)$)},right] at (aa) {stop it!};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Here is an imperative Haskell program}
+\begin{lstlisting}[style=haskell,mathescape]
+a >.> b = do
+  a
+  b
+  a
+  
+printfile = do
+  f <- readFile "file"
+  print f
+
+program =
+  printfile >.> writeFile "cods!" "file"
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{We can do this equational reasoning on imperative programs}
+\textbf{because we are functional programming}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{itemize}
+  \item<1-> Functional Programming
+  \item<2-> or Imperative Programming
+  \item<3-> \textbf{but never both}
+\end{itemize}
+\visible<4->{
+  \begin{tikzpicture}[remember picture,overlay]
+  \coordinate (aa) at ($(a1)+(0,4.7)$);
+  \node[right] at (aa) {\includegraphics[height=3cm]{image/bullshizzles.png}};
+  \end{tikzpicture}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{Functional programming is}
+just a \tiny{not ridiculous}\normalsize{ means of imperative programming}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+\begin{block}{To further help demonstrate this point}
+\begin{itemize}
+  \item<1> pure-functional random value library using the C\# programming language
+  \item<2> pure-functional RDBMS library using the Java programming language
+  \item<3> pure-functional terminal I/O programs using the Ruby programming language
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional v Imperative}
+``I don't think the benefits of enforcing side-effect-free code (even optionally) make up for the many work-arounds you have to use to get anything done in the real world.''
+\begin{center}
+\includegraphics[width=0.1\paperwidth]{image/lalala.png}
+\end{center}
+``[Functional Programming makes] the code pretty unreadable for people who aren't used to functional''
+\end{frame}
+
+% 

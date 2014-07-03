@@ -1,0 +1,252 @@
+{
+  \newmdenv[tikzsetting={draw=black,fill=white,fill opacity=0.7, line width=4pt},backgroundcolor=none,leftmargin=0,rightmargin=0,innertopmargin=4pt,skipbelow=\baselineskip,%
+  skipabove=\baselineskip]{TitleBoxWhatDoesFunctionalProgrammingMean}
+
+  \usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{image/title-background.png}}
+
+  \begin{frame}[plain] 
+  \title{What is Functional Programming?}
+  
+  \vspace{3em}
+
+  \begin{TitleBoxWhatDoesFunctionalProgrammingMean}
+    \begin{center}
+    {\Large \inserttitle}
+    \end{center}
+  \end{TitleBoxWhatDoesFunctionalProgrammingMean}
+
+  \end{frame}
+}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\begin{block}{Split the question in two}
+\begin{itemize}
+\item what does functional programming mean in principle?
+\item what are the consequences of this principle?
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\begin{block}{What does functional programming mean?}
+\begin{itemize}
+\item<1> programming with functions
+\item<2> yeah right, but what is a function?
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\begin{block}{A function}
+relates every argument to a result \textbf{and does nothing else}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\begin{block}{Functions give rise to \emph{referential transparency}}
+An expression \lstinline$expr$ is referentially transparent if in all programs \lstinline$p$,
+all occurrences of \lstinline$expr$ in \lstinline$p$ can be replaced by the result assigned
+to \lstinline$expr$ without causing an observable effect on \lstinline$p$.
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional Programming}
+\begin{block}{Functions give rise to \emph{referential transparency}}
+\begin{lstlisting}[style=python,mathescape]
+def p(): 
+  x = `expression`
+  proc(x, x)
+\end{lstlisting}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(5,5.2)$);
+\node[note,draw,callout relative pointer={($(aa)-(7.8,2.2)$)},right] at (aa) {is \lstinline$expression$ referentially transparent?};
+\end{tikzpicture}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional Programming}
+\begin{block}{Functions give rise to \emph{referential transparency}}
+\begin{lstlisting}[style=python,mathescape]
+def p(): 
+  # x = expression
+  proc(`expression`, `expression`)
+\end{lstlisting}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(2,2.0)$);
+\node[note,draw,callout relative pointer={($(aa)-(4.4,-3.1)$)},right] at (aa) {has this refactoring affected the program?};
+\node[note,draw,callout relative pointer={($(aa)-(1.8,-3.1)$)},right] at (aa) {has this refactoring affected the program?};
+\end{tikzpicture}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional Programming}
+\begin{block}{Referential Transparency}
+\begin{lstlisting}[style=python,mathescape]
+def print2(s, t):
+  print(s)
+  print(t)
+
+def strpopthen():
+  s = 'abcdef'
+  x = `s[0]`
+  print2(x,x)
+\end{lstlisting}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(5,4.2)$);
+\node[note,draw,callout relative pointer={($(aa)-(8.1,2.5)$)},right] at (aa) {referentially transparent?};
+\end{tikzpicture}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional Programming}
+\begin{block}{Referential Transparency}
+\begin{lstlisting}[style=python,mathescape]
+def print2(s, t):
+  print(s)
+  print(t)
+
+def strpopthen():
+  s = 'abcdef'
+  # x = s[0]
+  print2(`s[0]`,`s[0]`)
+\end{lstlisting}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(1,1.5)$);
+\node[note,draw,callout relative pointer={($(aa)-(1.3,-1.9)$)},right] at (aa) {program changed?};
+\node[note,draw,callout relative pointer={($(aa)-(0.3,-1.9)$)},right] at (aa) {program changed?};
+\end{tikzpicture}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional Programming}
+\begin{block}{Referential Transparency}
+\begin{lstlisting}[style=python,mathescape]
+def print2(s, t):
+  print(s)
+  print(t)
+
+def listpopthen():
+  s = ['a','b','c','d','e','f']
+  x = `s.pop()`
+  print2(x,x)
+\end{lstlisting}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(5,2.8)$);
+\node[note,draw,callout relative pointer={($(aa)-(7.7,0.1)$)},right] at (aa) {referentially transparent?};
+\end{tikzpicture}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Functional Programming}
+\begin{block}{Referential Transparency}
+\begin{lstlisting}[style=python,mathescape]
+def print2(s, t):
+  print(s)
+  print(t)
+
+def listpopthen():
+  s = ['a','b','c','d','e','f']
+  # x = s.pop()
+  print2(`s.pop()`,`s.pop()`)
+\end{lstlisting}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate (aa) at ($(a1)+(1,1.5)$);
+\node[note,draw,callout relative pointer={($(aa)-(1.3,-1.8)$)},right] at (aa) {program changed?};
+\node[note,draw,callout relative pointer={($(aa)-(-0.3,-1.8)$)},right] at (aa) {program changed?};
+\end{tikzpicture}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\framesubtitle{What does functional programming mean?}
+\begin{block}{The essence of functional programming}
+is the demand that expressions, \textbf{in general}, maintain referential transparency
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\framesubtitle{but why?}
+\begin{block}{referential transparency gives rise to, \textbf{and monopolises}}
+\begin{itemize}
+\item \emph{equational reasoning}
+
+      an essential tool for code readability
+\item \emph{modularity}
+
+      delineating concepts, building small programs from smaller programs
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\framesubtitle{therefore}
+\begin{block}{Functional Programming is}
+\begin{itemize}
+\item<1> a thesis, independent of any programming language
+\item<2> to some extent, a programming language may provide the programmer assistance in achieving adherence to the thesis
+\item<3> not anything more than this, despite what you may have been told
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\framesubtitle{python}
+\begin{block}{Well that raises an interesting question}
+Does python assist in achieving this objective?
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\framesubtitle{python}
+\begin{center}
+\huge{No.}
+\end{center}
+\normalsize
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\begin{block}{This question has been explored and answered}
+If anyone tells you that python supports functional programming to any (non-trivial) extent, \textbf{they are outright lying to you}
+\end{block}
+\tiny{and I have the code to prove it}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Functional Programming}
+\begin{block}{As a consequence}
+Python demands that you, the programmer, forgo many of the most essential tools of progressive software development
+\end{block}
+\end{frame}

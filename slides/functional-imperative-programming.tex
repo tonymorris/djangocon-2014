@@ -152,7 +152,7 @@ The discussion then quickly turned to beer
 program = do
   a <- readFile "file"
   print a
-  writeFile "cods!" "file"
+  writeFile "file" "cods!"
   b <- readFile "file"
   print b
 \end{lstlisting}
@@ -167,7 +167,7 @@ program = do
 program = do
   a <- `readFile "file"`
   print a
-  writeFile "cods!" "file"
+  writeFile "file" "cods!"
   b <- `readFile "file"`
   print b
 \end{lstlisting}
@@ -190,7 +190,7 @@ file =
 program = do
   a <- `file`
   print a
-  writeFile "cods!" "file"
+  writeFile "file" "cods!"
   b <- `file`
   print b
 \end{lstlisting}
@@ -213,7 +213,7 @@ file =
 program = do
   `a <- file`
   `print a`
-  writeFile "cods!" "file"
+  writeFile "file" "cods!"
   `b <- file`
   `print b`
 \end{lstlisting}
@@ -236,7 +236,7 @@ printfile = do
 
 program = do
   `printfile`
-  writeFile "cods!" "file"
+  writeFile "file" "cods!"
   `printfile`
 \end{lstlisting}
 \end{block}
@@ -263,7 +263,7 @@ printfile = do
 
 program = do
   `printfile`
-  writeFile "cods!" "file"
+  writeFile "file" "cods!"
   `printfile`
 \end{lstlisting}
 \end{block}
@@ -283,13 +283,13 @@ a >.> b = do
   a
   b
   a
-  
+
 printfile = do
   f <- readFile "file"
   print f
 
 program =
-  printfile >.> writeFile "cods!" "file"
+  printfile >.> writeFile "file" "cods!"
 \end{lstlisting}
 \end{block}
 \end{frame}
